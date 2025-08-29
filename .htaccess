@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# ถ้า Request ไม่ใช่ไฟล์หรือไดเรกทอรีที่มีอยู่จริง
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ให้ส่งต่อไปที่ public/index.php
+RewriteRule ^(.*)$ public/index.php?url=$1 [L,QSA]
