@@ -131,10 +131,12 @@ class Booking {
     public function getApprovedBookingsForCalendar(){
         $this->db->query('
             SELECT 
+                bookings.id,
                 bookings.subject as title,
                 bookings.start_time as start,
                 bookings.end_time as end,
-                rooms.color as color
+                rooms.name as roomname, 
+                rooms.color as backgroundColor
             FROM bookings
             JOIN rooms ON bookings.room_id = rooms.id
             WHERE bookings.status = "approved"
